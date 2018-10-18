@@ -6,12 +6,12 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class WorkerThread implements Runnable{
+public class Worker implements Runnable{
     private final CountDownLatch latch;
     private final AtomicInteger itemsCount;
     private final int maxItemNumber;
 
-    public WorkerThread(CountDownLatch latch, AtomicInteger itemsCount, int maxItemNumber){
+    public Worker(CountDownLatch latch, AtomicInteger itemsCount, int maxItemNumber){
         this.latch = latch;
         this.itemsCount = itemsCount;
         this.maxItemNumber = maxItemNumber;
@@ -19,7 +19,7 @@ public class WorkerThread implements Runnable{
 
     @Override
     public void run() {
-        int itemNumber = 0;
+        int itemNumber;
         while ((itemNumber = itemsCount.getAndIncrement()) < maxItemNumber) {
             System.out.println(Thread.currentThread().getName() + " finish item " + itemNumber);
             latch.countDown();

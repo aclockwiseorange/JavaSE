@@ -2,10 +2,10 @@ package com.aclockwiseorange.concurrency.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 
-public class ShipperThread implements Runnable {
+public class Shipper implements Runnable {
     private final CountDownLatch latch;
 
-    public ShipperThread(CountDownLatch latch) {
+    public Shipper(CountDownLatch latch) {
         this.latch = latch;
     }
 
